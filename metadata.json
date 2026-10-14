@@ -1,0 +1,6 @@
+{
+  "name": "فروشگاه ابزار حامی | Hami Tools",
+  "description": "سامانه مدیریت انبار و قیمت‌گذاری آفلاین فروشگاه ابزار حامی با پشتیبانی کامل از همگام‌سازی چندکاربره و تقویم خورشیدی",
+  "requestFramePermissions": ["notifications"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
