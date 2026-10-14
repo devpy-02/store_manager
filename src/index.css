@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+/* Tailwind CSS v4: enable dark: utilities through the app-managed .dark class. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  border-color: #000000;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+}
+
+/* چاپ فاکتور: فقط بخش فاکتور چاپ شود، نه کل برنامه */
+@page {
+  size: auto;
+  margin: 10mm;
+}
+@media print {
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    background: #fff !important;
+    overflow: visible !important;
+  }
+  body.printing-invoice > *:not(#print-invoice-area) {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  body.printing-invoice #print-invoice-area {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #000 !important;
+    background: #fff !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+  #print-invoice-area * {
+    visibility: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  #print-invoice-area .no-print,
+  .no-print {
+    display: none !important;
+  }
+  #print-invoice-area table { width: 100% !important; border-collapse: collapse !important; }
+  #print-invoice-area tr, #print-invoice-area img { break-inside: avoid; page-break-inside: avoid; }
+}
